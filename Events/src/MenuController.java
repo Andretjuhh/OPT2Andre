@@ -1,3 +1,4 @@
+import com.sun.security.jgss.GSSUtil;
 import java.security.spec.RSAOtherPrimeInfo;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -109,10 +110,22 @@ public class MenuController {
     }
 
     public void lijstEvent() {
-        Evenement e = evenementen.get(menuOpslag);
-        System.out.println(e.geefOverzicht());
+        Evenement event = evenementen.get(menuOpslag);
+        System.out.println(event.geefOverzicht());
+
+        System.out.println("Deelnemers:");
+        ArrayList<Deelnemer> deelnemers = event.getDeelnemers();
+
+        if (deelnemers.isEmpty()) {
+            System.out.println("Geen deelnemers in die event");
+        } else {
+            for (Deelnemer deelnemer : deelnemers) {
+                System.out.println("- baam: " + deelnemer.getNaam() + " Email: " + deelnemer.getEmail());
+            }
+        }
     }
 
+    //evenement toevoegen
     public void voegEvenementToe(){
        Scanner scanner = new Scanner(System.in);
         //vragenlijst wat vraagt naar de gegevens
@@ -169,8 +182,48 @@ public class MenuController {
         }
 
     }
+
+
+    //Deelnemers toevoegen
     public void schrijfDeelnemerIn (){
 
+        if (evenementen.isEmpty()) {
+            System.out.println("Er zijn momenteel geen events om deelnemers aan toe te voegen, voeg er een toe!");
+            return;
+        }
+
+        System.out.println("\n--- Huidige evenementen ---");
+        for (int i = 0; i < evenementen.size(); i++) {
+            System.out.println((i + 1) + ". " + evenementen.get(i).getNaam());
+        }
+
+        System.out.println("Typ het nummer van een evenement om een deelnemer toe te voegen.");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        if (isGetal(input)) {
+            int keuze = Integer.parseInt(input) - 1;
+            if (keuze >= 0 && keuze < evenementen.size()) {
+                Evenement event = evenementen.get(keuze);
+                System.out.println("Voer de deelnemer in:");
+                String naamDeelnemer = scanner.nextLine();
+                System.out.println("Voer de Email van de deelnemer in");
+                String eMail = scanner.nextLine();
+                Deelnemer nieuwDeelnemer = new Deelnemer(naamDeelnemer, eMail);
+                boolean done = event.voegDeelnemerToe(nieuwDeelnemer);
+
+                if (done) {
+                    System.out.println("Deelnemer is succesvol toegevoegd");
+
+                } else {
+                    System.out.println("Deelnemer is niet toegevoegd (vol of al ingeschreven).");
+                }
+
+            } else {
+                System.out.println("Geen geldig evenement nummer.");
+            }
+        } else {
+            System.out.println("Geen nummer ingevoerd.");
+        }
     }
 
     public void bewerkEvenement () {
