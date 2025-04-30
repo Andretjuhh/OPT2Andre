@@ -43,8 +43,6 @@ public abstract class Evenement{
         }
     }
 
-    public String geefOverzicht() {
-        return "Print overzicht van het Event (als je dit ziet gaat er iets mis XD";
-    }
+    public abstract String geefOverzicht();
 
 }
