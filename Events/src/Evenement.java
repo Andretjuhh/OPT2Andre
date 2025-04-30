@@ -2,20 +2,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public abstract class Evenement{
-    private int id;
     private String naam;
     private LocalDate datum;
     private int maxDeelnemers;
     private String locatie;
     private ArrayList<Deelnemer> deelnemers;
-    private int id_teller;
 
     Evenement (String naam, LocalDate datum, int maxDeelnemers, String locatie ){
         this.naam = naam;
         this.datum = datum;
         this.maxDeelnemers = maxDeelnemers;
         this.locatie = locatie;
-        this.id = id_teller++;
         this.deelnemers = new ArrayList<>();
     }
 

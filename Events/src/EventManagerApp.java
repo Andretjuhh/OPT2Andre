@@ -32,8 +32,6 @@ public class EventManagerApp {
         MenuController Menu = new MenuController(evenementen, 0);
 
         Menu.start();
-
-
     }
 }
 //To-do versie 2: Data schijven naar data base, na runtime zijn de toegevoegde Objecten verdwenen, bijvoorbeeld Json ofzo.
