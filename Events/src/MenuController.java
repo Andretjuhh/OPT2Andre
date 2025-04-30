@@ -107,7 +107,7 @@ public class MenuController {
     public void lijstEvent() {
         Evenement event = evenementen.get(menuOpslag);
         System.out.println(event.geefOverzicht());
-
+//
         System.out.println("Deelnemers:");
         ArrayList<Deelnemer> deelnemers = event.getDeelnemers();
 
@@ -239,13 +239,13 @@ public class MenuController {
             int keuze = Integer.parseInt(input) - 1;
             if (keuze >= 0 && keuze < evenementen.size()) {
                 menuOpslag = keuze;
-                System.out.println("Weet je zeker dat je dit event wilt verwijderen? (typ: JA of NEE)");
+                System.out.println("Weet je zeker dat je dit event wilt verwijderen? (typ: ja of nee)");
                 String delete = scanner.nextLine();
-                if (delete.equals("JA")) {
+                if (delete.equals("ja")) {
                     System.out.println("Selectie wordt verwijderd!!");
                     evenementen.remove(keuze);
                 }
-                if (delete.equals("NEE")) {
+                if (delete.equals("nee")) {
                     System.out.println("Event wordt NIET verwijderd!");
                 } else {
                     System.out.println("JA of NEE, andere commands werken niet.");

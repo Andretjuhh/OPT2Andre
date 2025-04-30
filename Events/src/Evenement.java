@@ -20,28 +20,8 @@ public abstract class Evenement{
         return naam;
     }
 
-    public void setNaam(String naam) {
-        this.naam = naam;
-    }
-
     public LocalDate getDatum() {
         return datum;
-    }
-
-    public void setDatum(LocalDate datum) {
-        this.datum = datum;
-    }
-
-    public int getMaxDeelnemers() {
-        return maxDeelnemers;
-    }
-
-    public void setMaxDeelnemers(int maxDeelnemers) {
-        this.maxDeelnemers = maxDeelnemers;
-    }
-
-    public void setLocatie(String locatie) {
-        this.locatie = locatie;
     }
 
     public String getLocatie() {
@@ -50,10 +30,6 @@ public abstract class Evenement{
 
     public ArrayList<Deelnemer> getDeelnemers() {
         return deelnemers;
-    }
-
-    public String geefOverzicht() {
-        return "Print overzicht van het Event (als je dit ziet gaat er iets mis XD";
     }
 
     public boolean voegDeelnemerToe(Deelnemer deelnemer){
@@ -66,4 +42,9 @@ public abstract class Evenement{
             return true;
         }
     }
+
+    public String geefOverzicht() {
+        return "Print overzicht van het Event (als je dit ziet gaat er iets mis XD";
+    }
+
 }

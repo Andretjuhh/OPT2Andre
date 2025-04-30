@@ -8,10 +8,6 @@ public class Lezing extends Evenement{
         this.spreker = spreker;
     }
 
-    public String getSpreker() {
-        return spreker;
-    }
-
     @Override
     public String geefOverzicht() {
         return "Lezing: " + getNaam() + " spreker:" + spreker + " op: " + getDatum();

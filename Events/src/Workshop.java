@@ -7,11 +7,6 @@ public class Workshop extends Evenement{
         super(naam, datum, maxDeelnemers, locatie);
         this.materiaal = materiaal;
     }
-
-    public String getMateriaal() {
-        return materiaal;
-    }
-
     @Override
     public String geefOverzicht() {
         return "Workshop: " + getNaam() + " materiaal:" + materiaal + " op: " + getDatum();
