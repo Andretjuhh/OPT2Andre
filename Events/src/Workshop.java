@@ -3,8 +3,8 @@ import java.time.LocalDate;
 public class Workshop extends Evenement{
     private String materiaal;
 
-    Workshop(String materiaal, String naam, LocalDate datum, int maxDeelnemers) {
-        super(naam, datum, maxDeelnemers);
+    Workshop(String materiaal, String naam, LocalDate datum, int maxDeelnemers, String locatie) {
+        super(naam, datum, maxDeelnemers, locatie);
         this.materiaal = materiaal;
     }
 

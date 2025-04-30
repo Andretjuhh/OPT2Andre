@@ -6,13 +6,15 @@ public abstract class Evenement{
     private String naam;
     private LocalDate datum;
     private int maxDeelnemers;
+    private String locatie;
     private ArrayList<Deelnemer> deelnemers;
     private int id_teller;
 
-    Evenement (String naam, LocalDate datum, int maxDeelnemers ){
+    Evenement (String naam, LocalDate datum, int maxDeelnemers, String locatie ){
         this.naam = naam;
         this.datum = datum;
         this.maxDeelnemers = maxDeelnemers;
+        this.locatie = locatie;
         this.id = id_teller++;
         this.deelnemers = new ArrayList<>();
     }
@@ -41,8 +43,16 @@ public abstract class Evenement{
         this.maxDeelnemers = maxDeelnemers;
     }
 
+    public void setLocatie(String locatie) {
+        this.locatie = locatie;
+    }
+
+    public String getLocatie() {
+        return locatie;
+    }
+
     public String geefOverzicht() {
-        return "";
+        return "Print overzicht van het Event (als je dit ziet gaat er iets mis XD";
     }
 
     public boolean voegDeelnemerToe(Deelnemer deelnemer){
