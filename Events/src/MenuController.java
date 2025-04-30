@@ -1,5 +1,3 @@
-import com.sun.security.jgss.GSSUtil;
-import java.security.spec.RSAOtherPrimeInfo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -59,10 +57,8 @@ public class MenuController {
             } else if (input.equals("4")) {
                 verwijderEvenement();
             } else if (input.equals("5")) {
-                bewerkEvenement();
-            } else if (input.equals("6")) {
                 bezig = false;
-                System.out.println("Tot ziens");
+                System.out.println("Tot ziens!");
               } else {
                 System.out.println("geen nummer, kies een nummer");
             }
@@ -75,9 +71,8 @@ public class MenuController {
             System.out.println("2. Voeg nieuw evenement toe");
             System.out.println("3. Schrijf deelnemer in");
             System.out.println("4. Verwijder evenement");
-            System.out.println("5. Bewerk evenement");
-            System.out.println("6. Stoppen");
-            System.out.print("Typ je keuze (1 t/m 6): ");
+            System.out.println("5. Stoppen");
+            System.out.print("Typ je keuze (1 t/m 5): ");
     }
 
 
@@ -225,12 +220,42 @@ public class MenuController {
             System.out.println("Geen nummer ingevoerd.");
         }
     }
-
-    public void bewerkEvenement () {
-
-    }
+    //verwijderen van events
     public void verwijderEvenement () {
+        if (evenementen.isEmpty()) {
+            System.out.println("Er zijn momenteel geen events om te verwijderen, maak een event aan om deze te verwijderen XD");
+            return;
+        }
+        System.out.println("\n--- Huidige evenementen ---");
+        for (int i = 0; i < evenementen.size(); i++) {
+            System.out.println((i + 1) + ". " + evenementen.get(i).getNaam());
+        }
 
+        System.out.println("Typ het nummer van een evenement om details te bekijken:");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+
+        if (isGetal(input)) {
+            int keuze = Integer.parseInt(input) - 1;
+            if (keuze >= 0 && keuze < evenementen.size()) {
+                menuOpslag = keuze;
+                System.out.println("Weet je zeker dat je dit event wilt verwijderen? (typ: JA of NEE)");
+                String delete = scanner.nextLine();
+                if (delete.equals("JA")) {
+                    System.out.println("Selectie wordt verwijderd!!");
+                    evenementen.remove(keuze);
+                }
+                if (delete.equals("NEE")) {
+                    System.out.println("Event wordt NIET verwijderd!");
+                } else {
+                    System.out.println("JA of NEE, andere commands werken niet.");
+                }
+
+            } else {
+                System.out.println("Geen geldig evenement nummer.");
+            }
+        } else {
+            System.out.println("Geen nummer ingevoerd.");
+        }
     }
-
 }
