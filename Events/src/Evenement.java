@@ -51,6 +51,10 @@ public abstract class Evenement{
         return locatie;
     }
 
+    public ArrayList<Deelnemer> getDeelnemers() {
+        return deelnemers;
+    }
+
     public String geefOverzicht() {
         return "Print overzicht van het Event (als je dit ziet gaat er iets mis XD";
     }
